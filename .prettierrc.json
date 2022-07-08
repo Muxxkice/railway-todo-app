@@ -1,5 +1,4 @@
 {
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  }
+  "semi": false,
+  "tabWidth": 2
 }
