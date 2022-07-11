@@ -1,35 +1,28 @@
-@charset "utf-8";
-
 .signin {
   width: 500px;
   margin: 0 auto;
 }
-
-.signin-form {
+.signin .error-message {
+  color: #ff3333;
+}
+.signin .signin-form {
   margin: 25px 0;
 }
-
-.email-label,
-.password-label {
+.signin .signin-form .email-label,
+.signin .signin-form .password-label {
   color: #555555;
 }
-
-.email-input,
-.password-input {
+.signin .signin-form .email-input,
+.signin .signin-form .password-input {
   width: 100%;
   font-size: large;
   height: 30px;
   margin-bottom: 25px;
 }
-
-.signin-button {
+.signin .signin-form .signin-button {
   background-color: #242f9b;
   color: #ffffff;
   width: 100px;
   height: 40px;
   border-radius: 5px;
-}
-
-.error-message {
-  color: #ff3333;
-}
+}/*# sourceMappingURL=signin.css.map */

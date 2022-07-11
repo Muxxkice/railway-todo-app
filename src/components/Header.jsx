@@ -1,4 +1,3 @@
-import React from "react"
 import { useCookies } from "react-cookie"
 import { useSelector, useDispatch } from "react-redux/es/exports"
 import { useNavigate } from "react-router-dom"
