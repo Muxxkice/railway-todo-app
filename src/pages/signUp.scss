@@ -1,37 +1,33 @@
 @charset "utf-8";
+@import "../components/common.scss";
 
 .signup {
   width: 500px;
   margin: 0 auto;
+}
 
-  .error-message {
-    color: #ff3333;
+.signup-form {
+  margin: 25px 0;
+  color: $text;
+
+  .email-input,
+  .name-input,
+  .password-input {
+    width: 100%;
+    font-size: large;
+    height: 30px;
+    margin-bottom: 25px;
   }
 
-  .signup-form {
-    margin: 25px 0;
-    color: #555555;
-
-    .email-input,
-    .name-input,
-    .password-input {
-      width: 100%;
-      font-size: large;
-      height: 30px;
-      margin-bottom: 25px;
-    }
-
-    .signup-button {
-      background-color: #242f9b;
-      color: #ffffff;
-      width: 100px;
-      height: 40px;
-      border-radius: 5px;
-    }
+  .signup-button {
+    background-color: $bgcolor;
+    color: #ffffff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
   }
 }
-//コンポーネントとして切り出す
-// commoで汎用的に使えるもの
-//エラーメッセージのコンポーネント
-//詳細度が高いcssは辛い、小さいものがよいネストが深くなると遊園順位がバッティングしてしまう
-//基本的にしない方がいい
+
+.error-message {
+  color: $attention_color;
+}

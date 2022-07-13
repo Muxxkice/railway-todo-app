@@ -9,9 +9,11 @@ export const Header = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [
-    // cookies, setCookie,
+    // cookies,
+    // setCookie,
     removeCookie,
   ] = useCookies()
+
   const handleSignOut = () => {
     dispatch(signOut())
     removeCookie("token")
