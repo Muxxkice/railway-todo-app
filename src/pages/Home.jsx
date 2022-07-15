@@ -5,6 +5,7 @@ import axios from "axios"
 import { Header } from "../components/Header"
 import { url } from "../const"
 import "./home.scss"
+import dayjs from "dayjs"
 
 export const Home = () => {
   const [isDoneDisplay, setIsDoneDisplay] = useState("todo") // todo->未完了 done->完了
@@ -13,6 +14,7 @@ export const Home = () => {
   const [tasks, setTasks] = useState([])
   const [errorMessage, setErrorMessage] = useState("")
   const [cookies] = useCookies()
+
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value)
   useEffect(() => {
     axios
@@ -40,6 +42,7 @@ export const Home = () => {
           },
         })
         .then((res) => {
+          console.log(res)
           setTasks(res.data.tasks)
         })
         .catch((err) => {
@@ -57,12 +60,14 @@ export const Home = () => {
         },
       })
       .then((res) => {
+        console.log(res)
         setTasks(res.data.tasks)
       })
       .catch((err) => {
         setErrorMessage(`タスクの取得に失敗しました。${err}`)
       })
   }
+
   return (
     <div>
       <Header />
@@ -121,6 +126,41 @@ export const Home = () => {
     </div>
   )
 }
+// getTimelimit
+const RemainingTime = ({ to }) => {
+  console.log(to)
+  const limit = dayjs(to)
+  const today = dayjs()
+  const diff = limit.diff(today, "day")
+  console.log(diff)
+  if (diff === 0) {
+    if (limit.diff(today, "hour") !== 0) {
+      return (
+        <p className="limit_diff">
+          残り<span>{limit.diff(today, "hour")}</span>時間
+        </p>
+      )
+    } else {
+      return (
+        <p className="limit_diff">
+          残り<span>{limit.diff(today, "minute")}</span>分
+        </p>
+      )
+    }
+  } else if (diff >= 0) {
+    return (
+      <p className="limit_diff">
+        残り<span>{diff}</span>日
+      </p>
+    )
+  } else {
+    return (
+      <p className="limit_diff">
+        <span> 期限を過ぎています</span>
+      </p>
+    )
+  }
+}
 
 // 表示するタスク
 const Tasks = (props) => {
@@ -162,7 +202,12 @@ const Tasks = (props) => {
               to={`/lists/${selectListId}/tasks/${task.id}`}
               className="task-item-link"
             >
-              {task.title}
+              <p className="task-item-title">{task.title}</p>
+              <lavel>期限</lavel>
+              <p>{dayjs(task.limit).format("YYYY年M月D日")}</p>
+              <br />
+              {/* <p>{(task.limit)}</p> */}
+              <RemainingTime to={task.limit} />
               <br />
               {task.done ? "完了" : "未完了"}
             </Link>

@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie"
 import { url } from "../const"
 import { useNavigate, useParams } from "react-router-dom"
 import "./editTask.scss"
+import dayjs from "dayjs"
 
 export const EditTask = () => {
   const navigate = useNavigate()
@@ -17,11 +18,18 @@ export const EditTask = () => {
   const handleTitleChange = (e) => setTitle(e.target.value)
   const handleDetailChange = (e) => setDetail(e.target.value)
   const handleIsDoneChange = (e) => setIsDone(e.target.value === "done")
+  const [limit, setLimit] = useState("")
+
+  const handleLimitChange = (e) => {
+    setLimit(e.target.value)
+  }
+
   const onUpdateTask = () => {
     console.log(isDone)
     const data = {
       title: title,
       detail: detail,
+      limit: dayjs(limit).toISOString(),
       done: isDone,
     }
 
@@ -31,8 +39,7 @@ export const EditTask = () => {
           authorization: `Bearer ${cookies.token}`,
         },
       })
-      .then((res) => {
-        console.log(res.data)
+      .then(() => {
         navigate("/")
       })
       .catch((err) => {
@@ -64,9 +71,12 @@ export const EditTask = () => {
       })
       .then((res) => {
         const task = res.data
+        console.log(task)
         setTitle(task.title)
         setDetail(task.detail)
         setIsDone(task.done)
+        setLimit(dayjs(task.limit).format("YYYY-MM-DDThh:mm"))
+        console.log(limit)
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`)
@@ -98,6 +108,14 @@ export const EditTask = () => {
             value={detail}
           />
           <br />
+          <label>タスクの期限</label>
+          <br />
+          <input
+            type="datetime-local"
+            value={limit}
+            onChange={handleLimitChange}
+            className="edit-task-limit"
+          />
           <div>
             <input
               type="radio"

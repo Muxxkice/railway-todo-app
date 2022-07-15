@@ -25,7 +25,7 @@ export const Router = () => {
             <Route
               exact
               path="/lists/:listId/tasks/:taskId"
-              element={EditTask}
+              element={<EditTask />}
             />
             <Route exact path="/lists/:listId/edit" element={<EditList />} />
           </>
