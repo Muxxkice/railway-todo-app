@@ -1,9 +1,18 @@
 @charset "utf-8";
 @import "../components/common.scss";
 
+.new-task h2 {
+  padding: 0.25em 0.5em;
+  color: $black;
+  border-left: solid 5px $title_bgcolor;
+  background-color: rgb(217, 237, 237);
+  margin-bottom: 20px;
+}
+
 .new-task {
-  width: 1000px;
+  width: 300px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .new-task-form {
@@ -30,4 +39,18 @@
 }
 .error-message {
   color: $attention_color;
+}
+
+@media (max-width: 320px) {
+  .new-task {
+    width: 250px;
+  }
+  .new-task-form {
+    .new-task-select-list,
+    .new-task-title,
+    .new-task-detail,
+    .new-task-limit {
+      width: 250px;
+    }
+  }
 }

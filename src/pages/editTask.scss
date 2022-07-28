@@ -5,6 +5,13 @@
   width: 1000px;
   margin: 0 auto;
 }
+.edit-task h2 {
+  padding: 0.25em 0.5em;
+  color: $black;
+  border-left: solid 5px $title_bgcolor;
+  background-color: rgb(217, 237, 237);
+  margin-bottom: 20px;
+}
 
 .edit-task-form {
   color: $text;

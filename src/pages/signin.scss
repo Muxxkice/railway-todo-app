@@ -5,6 +5,13 @@
   width: 500px;
   margin: 0 auto;
 }
+
+@media (max-width: 320px) {
+  .signin {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
 .signin-form {
   margin: 25px 0;
 

@@ -23,7 +23,8 @@ export const NewList = () => {
           authorization: `Bearer ${cookies.token}`,
         },
       })
-      .then(() => {
+      .then((res) => {
+        console.log(res)
         navigate("/")
       })
       .catch((err) => {

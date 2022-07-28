@@ -1,6 +1,23 @@
 // color
 $bgcolor: #242f9b;
-$title_bgcolor: #4e59bf;
+$title_bgcolor: #8a94e8;
 $white: #ffffff;
 $attention_color: #ff3333;
+$accentcolor: #ff6e00;
 $text: #555555;
+$black: #000000;
+@media (max-width: 768px) and (min-width: 319px) {
+}
+
+@media (max-width: 320px) {
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: #ff6e00;
+}
+
+button {
+  text-align: center;
+}

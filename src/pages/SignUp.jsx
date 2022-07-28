@@ -16,10 +16,11 @@ export const SignUp = () => {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessge] = useState()
-  const [setCookie] = useCookies()
+  const [cookies, setCookie, removeCookie] = useCookies()
   const handleEmailChange = (e) => setEmail(e.target.value)
   const handleNameChange = (e) => setName(e.target.value)
   const handlePasswordChange = (e) => setPassword(e.target.value)
+
   const onSignUp = () => {
     const data = {
       email: email,
@@ -30,6 +31,7 @@ export const SignUp = () => {
     axios
       .post(`${url}/users`, data)
       .then((res) => {
+        console.log(res)
         const token = res.data.token
         dispatch(signIn())
         setCookie("token", token)
